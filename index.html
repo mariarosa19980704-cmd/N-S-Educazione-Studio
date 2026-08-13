@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N&S EDUCAZIONE STUDIO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        body {
+            background-color: #fcf9f3;
+            color: #1a2639;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        /* 导航栏 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+        .logo {
+            font-weight: bold;
+        }
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: #1a2639;
+            font-size: 14px;
+        }
+        .header-right {
+            display: flex;
+            gap:16px;
+            align-items: center;
+        }
+        .lang-switch {
+            border:1px solid #ccc;
+            border-radius:20px;
+            padding:4px 10px;
+            font-size:13px;
+        }
+        .btn-dark {
+            background:#1a2639;
+            color:#fff;
+            padding:10px 22px;
+            border-radius:24px;
+            border:none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            border:1px solid #1a2639;
+            padding:10px 22px;
+            border-radius:24px;
+            background:transparent;
+            cursor: pointer;
+        }
+        /* 首屏Hero区域 */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:40px;
+            padding:40px;
+            align-items: center;
+        }
+        .hero h2 {
+            font-size:42px;
+            line-height:1.2;
+            margin-bottom:12px;
+        }
+        .hero .sub-title {
+            font-size:26px;
+            color:#b49764;
+            margin-bottom:24px;
+        }
+        .hero p {
+            font-size:14px;
+            color:#444;
+            margin-bottom:30px;
+        }
+        .hero-buttons {
+            display:flex;
+            gap:16px;
+        }
+        .hero-img {
+            border-radius:20px;
+            width:100%;
+            object-fit: cover;
+        }
+        /* Who We Are */
+        .who-we-are {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            padding:80px 40px;
+            align-items:center;
+        }
+        .round-img {
+            border-radius:50%;
+            width:100%;
+            max-width:420px;
+            object-fit: cover;
+        }
+        .section-tag {
+            font-size:12px;
+            color:#b49764;
+            letter-spacing:1px;
+        }
+        .section-title {
+            font-size:32px;
+            margin:6px 0 10px;
+        }
+        .section-sub {
+            font-size:20px;
+            color:#b49764;
+            margin-bottom:20px;
+        }
+        /* 项目卡片区域 */
+        .programs {
+            padding:80px 40px;
+            text-align:center;
+        }
+        .card-wrap {
+            display:grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap:24px;
+            margin-top:40px;
+        }
+        .program-card {
+            background:#fff;
+            border-radius:12px;
+            overflow:hidden;
+            text-align:left;
+        }
+        .program-card img {
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
+        .card-text {
+            padding:16px;
+        }
+        /* 四大服务板块 */
+        .services {
+            padding:80px 40px;
+        }
+        .service-grid {
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:30px;
+            margin-top:40px;
+        }
+        .service-item {
+            text-align:left;
+        }
+        /* 数据深蓝色区块 */
+        .stats {
+            background:#1a2639;
+            color:#fff;
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            padding:60px 40px;
+            text-align:center;
+        }
+        .stats-num {
+            font-size:36px;
+            color:#d4bc8c;
+            font-weight:bold;
+        }
+        /* 学员评价 */
+        .testimonials {
+            padding:80px 40px;
+            text-align:center;
+        }
+        .testi-wrap {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:24px;
+            margin-top:40px;
+        }
+        .testi-card {
+            background:#fff;
+            padding:24px;
+            border-radius:12px;
+            text-align:left;
+            box-shadow: 0 2px 8px #00000012;
+        }
+        /* 资讯板块 */
+        .news {
+            padding:80px 40px;
+        }
+        .news-wrap {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:24px;
+            margin-top:40px;
+        }
+        .news-card img {
+            width:100%;
+            height:180px;
+            object-fit:cover;
+            border-radius:8px;
+        }
+        /* 底部行动区 */
+        .cta {
+            background:#1a2639;
+            color:#fff;
+            padding:80px 40px;
+            text-align:center;
+        }
+        .cta .btn-outline{
+            color:#fff;
+            border-color:#fff;
+        }
+        /* 页脚 */
+        footer {
+            background:#1a2639;
+            color:#ddd;
+            padding:60px 40px;
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:30px;
+        }
+        /* 移动端简易适配 */
+        @media (max-width:900px){
+            .hero, .who-we-are {
+                grid-template-columns:1fr;
+            }
+            .card-wrap,.service-grid,.stats,.testi-wrap,.news-wrap,footer {
+                grid-template-columns:1fr 1fr;
+            }
+        }
+        @media (max-width:600px){
+            .card-wrap,.service-grid,.testi-wrap,.news-wrap,footer {
+                grid-template-columns:1fr;
+            }
+            .hero h2{
+                font-size:30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+<header>
+    <div class="logo">N&S EDUCAZIONE STUDIO</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Programs</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="header-right">
+        <span class="lang-switch">EN | IT</span>
+        <button class="btn-dark">Inquire Now</button>
+    </div>
+</header>
+<!--首屏区域-->
+<section class="hero">
+    <div>
+        <p class="section-tag">YOUR EUROPEAN ACADEMIC PATHWAY</p>
+        <h2>Your Gateway to World-Class Education</h2>
+        <div class="sub-title">La Tua Porta verso un'Istruzione di Livello Mondiale</div>
+        <p>Expertly guiding ambitious students to secure placements in prestigious Italian and European universities. Seamless application, visa, and cultural transition mapping.</p>
+        <div class="hero-buttons">
+            <button class="btn-dark">Explore Programs</button>
+            <button class="btn-outline">Book a Consultation</button>
+        </div>
+    </div>
+    <div>
+        <img class="hero-img" src="https://picsum.photos/id/1031/800/450" alt="European University Courtyard">
+    </div>
+</section>
+<!--Who We Are-->
+<section class="who-we-are container">
+    <div>
+        <img class="round-img" src="https://picsum.photos/id/1048/500/500" alt="Vintage Globes & Books">
+    </div>
+    <div>
+        <p class="section-tag">WHO WE ARE / CHI SIAMO</p>
+        <h3 class="section-title">Bridging Dreams & International Realities</h3>
+        <div class="section-sub">Uniamo i Tuoi Sogni alle Realtà Internazionali</div>
+        <p>N&S Educazione Studio is an elite international education agency rooted in Milan. For over a decade, we have partnered with top‑tier European institutions to demystify complex enrolment architectures, offering tailor‑made placement consulting for global minds.</p>
+        <button class="btn-outline" style="margin-top:24px;">Meet Our Advisors</button>
+    </div>
+</section>
+<!--学术项目板块-->
+<section class="programs container">
+    <p class="section-tag">OUR SPECIALIZATIONS / NOSTRI PROGRAMMI</p>
+    <h3 class="section-title">Academic Pathways Designed For Excellence</h3>
+    <div class="section-sub">Percorsi Accademici Disegnati per l'Eccellenza</div>
+    <div class="card-wrap">
+        <!--卡片1 本科-->
+        <div class="program-card">
+            <img src="https://picsum.photos/id/1060/600/300" alt="Undergraduate Students">
+            <div class="card-text">
+                <h4>Undergraduate Pathways</h4>
+                <p>Secure your place in elite Bachelor’s programs across Europe.</p>
+                <small>3‑4 YEARS / ANNI</small>
+            </div>
+        </div>
+        <!--卡片2 硕博-->
+        <div class="program-card">
+            <img src="https://picsum.photos/id/1061/600/300" alt="Postgraduate Research">
+            <div class="card-text">
+                <h4>Postgraduate & Master</h4>
+                <p>Advanced academic specialization, clinical programs, and MBAs.</p>
+                <small>1‑2 YEARS / ANNI</small>
+            </div>
+        </div>
+        <!--卡片3 语言学院-->
+        <div class="program-card">
+            <img src="https://picsum.photos/id/1062/600/300" alt="Language Academy Seminar">
+            <div class="card-text">
+                <h4>Language Academy</h4>
+                <p>Immersive language training, preparatory pathway years.</p>
+                <small>FLEXIBLE / FLESSIBILE</small>
+            </div>
+        </div>
+        <!--卡片4 暑期项目-->
+        <div class="program-card">
+            <img src="https://picsum.photos/id/1063/600/300" alt="Summer Study Program">
+            <div class="card-text">
+                <h4>Summer Programs</h4>
+                <p>Intensive seasonal courses merging core academics with cultural explorations.</p>
+                <small>2‑6 WEEKS / SETTIMANE</small>
+            </div>
+        </div>
+    </div>
+</section>
+<!--四大服务-->
+<section class="services container">
+    <p class="section-tag">THE STUDIO DIFFERENCE / PERCHÉ SCEGLIERCI</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+        <div>
+            <h3 class="section-title">Navigating Global Admissions with Authority</h3>
+            <div class="section-sub">Semplifichiamo l'Ingresso Internazionale con Autorità</div>
+        </div>
+        <button class="btn-outline">Our Method</button>
+    </div>
+    <div class="service-grid">
+        <div class="service-item">
+            <div style="width:36px;height:36px;border:1px solid #1a2639;border-radius:50%;margin-bottom:12px;"></div>
+            <h4>Expert Guidance</h4>
+            <p>Our senior academic advisors are deeply trained in institutional dynamics and precise admission parameters.</p>
+        </div>
+        <div class="service-item">
+            <div style="width:36px;height:36px;border:1px solid #1a2639;border-radius:50%;margin-bottom:12px;"></div>
+            <h4>University Network</h4>
+            <p>Exclusive channels and close direct ties with prestigious faculties, business schools and language academies.</p>
+        </div>
+        <div class="service-item">
+            <div style="width:36px;height:36px;border:1px solid #1a2639;border-radius:50%;margin-bottom:12px;"></div>
+            <h4>Visa & Legal Support</h4>
+            <p>Full‑scope strategic handling of consultates, re‑entry permit, portails, and residency requirements.</p>
+        </div>
+        <div class="service-item">
+            <div style="width:36px;height:36px;border:1px solid #1a2639;border-radius:50%;margin-bottom:12px;"></div>
+            <h4>Cultural Integration</h4>
+            <p>Pre‑departure preparation mapped to local Italian life, regional logistics, and peer network introductions.</p>
+        </div>
+    </div>
+</section>
+<!--数据统计栏-->
+<section class="stats">
+    <div>
+        <div class="stats-num">500+</div>
+        <small>Students Assisted</small>
+    </div>
+    <div>
+        <div class="stats-num">50+</div>
+        <small>Partner Universities</small>
+    </div>
+    <div>
+        <div class="stats-num">10+</div>
+        <small>Years of Excellence</small>
+    </div>
+    <div>
+        <div class="stats-num">98%</div>
+        <small>Success Rate</small>
+    </div>
+</section>
+<!--学员评价-->
+<section class="testimonials container">
+    <p class="section-tag">STUDENT VOICES / STORIE DEGLI STUDENTI</p>
+    <h3 class="section-title">Journeys of Academic Success</h3>
+    <div class="section-sub">Percorsi di Successo Accademico</div>
+    <div class="testi-wrap">
+        <div class="testi-card">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
+                <div style="width:40px;height:40px;border-radius:50%;background:#ccc;"></div>
+                <div>
+                    <div>Siddharth Menta</div>
+                    <small>Bocconi University, Milan</small>
+                </div>
+            </div>
+            <p>"N&S made my dream of studying Economics at Bocconi a reality. Their legal and pre‑enrolment expertise was impeccable."</p>
+        </div>
+        <div class="testi-card">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
+                <div style="width:40px;height:40px;border-radius:50%;background:#ccc;"></div>
+                <div>
+                    <div>Camila Lopez</div>
+                    <small>Sapienza University, Rome</small>
+                </div>
+            </div>
+            <p>"From the language certifications to secure local residency mapping, N&S advisors supported me at every single milestone."</p>
+        </div>
+        <div class="testi-card">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
+                <div style="width:40px;height:40px;border-radius:50%;background:#ccc;"></div>
+                <div>
+                    <div>Yuki Tanaka</div>
+                    <small>Politecnico di Torino</small>
+                </div>
+            </div>
+            <p>"Securing an architecture placement in Italy was daunting. The personalized portfolio review at N&S was a game‑changer."</p>
+        </div>
+    </div>
+</section>
+<!--资讯板块-->
+<section class="news container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+        <div>
+            <p class="section-tag">KNOWLEDGE HUB / ULTIME NOTIZIE</p>
+            <h3 class="section-title">Latest Insights & Academic Intelligence</h3>
+            <div class="section-sub">Approfondimenti Accademici e Aggiornamenti</div>
+        </div>
+        <button class="btn-outline">View All News</button>
+    </div>
+    <div class="news-wrap">
+        <div class="news-card">
+            <img src="https://picsum.photos/id/1041/600/300" alt="Ancient Italy Map">
+            <h4>Italian Pre‑Enrollment Guide for 2026 Academic Year</h4>
+            <small>Read Article</small>
+        </div>
+        <div class="news-card">
+            <img src="https://picsum.photos/id/1042/600/300" alt="Scholarship Certificate">
+            <h4>How to Secure DSU and Regional Scholarships in Italy</h4>
+            <small>Read Article</small>
+        </div>
+        <div class="news-card">
+            <img src="https://picsum.photos/id/1043/600/300" alt="Rome City Cafe">
+            <h4>Cost of Living & Housing Strategies in Milan and Rome</h4>
+            <small>Read Article</small>
+        </div>
+    </div>
+</section>
+<!--行动号召区-->
+<section class="cta">
+    <h2 class="section-title">Start Your Journey Today</h2>
+    <div class="section-sub">Inizia il Tuo Percorso Oggi</div>
+    <div style="margin-top:30px;display:flex;gap:20px;justify-content:center;flex-wrap: wrap;">
+        <button class="btn-dark">Book Free Assessment</button>
+        <button class="btn-outline">Contact via WhatsApp</button>
+    </div>
+</section>
+<!--页脚-->
+<footer>
+    <div>
+        <h4>N&S EDUCAZIONE STUDIO</h4>
+        <p style="margin-top:12px;font-size:13px;">We support ambitious students to access prestigious universities across Europe.</p>
+    </div>
+    <div>
+        <h4>SERVIZI</h4>
+        <p>Consulting<br>Master<br>Pre‑Matricola<br>Language Prep</p>
+    </div>
+    <div>
+        <h4>CONTATTI</h4>
+        <p>Via Monte Napoleone, 12, Milano<br>Email: info@ns‑educazione.com</p>
+    </div>
+    <div>
+        <h4>SEGUICI</h4>
+        <div style="display:flex;gap:12px;margin‑top:12px;">
+            <div style="width:30px;height:30px;border:1px solid #ddd;border‑radius:50%;"></div>
+            <div style="width:30px;height:30px;border:1px solid #ddd;border‑radius:50%;"></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N&S Educazione Studio</title>
+    <style>
+        :root {
+            --dark-navy: #162840;
+            --cream: #f9f5eb;
+            --gold: #b89b68;
+            --text-dark: #162840;
+            --text-light: #555566;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 16px rgba(0,0,0,0.06);
+            --radius-lg: 16px;
+            --radius-full: 999px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Georgia, serif;
+        }
+        body {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* ========== 导航栏 ========== */
+        header {
+            background: var(--white);
+            padding:16px 0;
+            position: sticky;
+            top:0;
+            z-index:99;
+        }
+        .nav-wrap {
+            display:flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+        .logo {
+            display:flex;
+            align-items:center;
+            gap:8px;
+            text-decoration:none;
+            color:var(--dark-navy);
+            font-weight:bold;
+        }
+        .logo-circle {
+            width:28px;
+            height:28px;
+            border-radius:50%;
+            background:var(--dark-navy);
+            color:white;
+            display:grid;
+            place-items:center;
+        }
+        .nav-links {
+            display:flex;
+            gap:28px;
+            list-style:none;
+        }
+        .nav-links a {
+            text-decoration:none;
+            color:var(--text-dark);
+            font-size:14px;
+        }
+        .nav-right {
+            display:flex;
+            align-items:center;
+            gap:16px;
+        }
+        .lang-switch {
+            display:flex;
+            border:1px solid #ddd;
+            border-radius:var(--radius-full);
+            overflow:hidden;
+        }
+        .lang-switch span {
+            padding:4px 10px;
+            font-size:13px;
+            cursor:pointer;
+        }
+        .lang-switch .active {
+            background:var(--dark-navy);
+            color:white;
+        }
+        .btn-primary {
+            background:var(--dark-navy);
+            color:white;
+            border:none;
+            padding:10px 22px;
+            border-radius:var(--radius-full);
+            cursor:pointer;
+        }
+        .btn-outline {
+            background:transparent;
+            border:1px solid var(--dark-navy);
+            color:var(--dark-navy);
+            padding:10px 22px;
+            border-radius:var(--radius-full);
+            cursor:pointer;
+        }
+        /* ========== Hero 首屏 ========== */
+        .hero {
+            padding:60px 0;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:48px;
+            align-items:center;
+        }
+        .hero-eyebrow {
+            font-size:13px;
+            color:var(--gold);
+            letter-spacing:1px;
+            margin-bottom:8px;
+        }
+        .hero h1 {
+            font-size:42px;
+            line-height:1.2;
+            margin-bottom:12px;
+        }
+        .hero-subtitle-it {
+            font-size:24px;
+            color:var(--gold);
+            margin-bottom:20px;
+        }
+        .hero p {
+            color:var(--text-light);
+            margin-bottom:32px;
+            font-size:16px;
+        }
+        .hero-buttons {
+            display:flex;
+            gap:16px;
+        }
+        .hero-img-wrap {
+            border-radius:var(--radius-lg);
+            overflow:hidden;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+        }
+        .hero-img-wrap img {
+            width:100%;
+            display:block;
+            object-fit:cover;
+        }
+        /* ========== About 区域 ========== */
+        .about {
+            padding:80px 0;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:48px;
+            align-items:center;
+        }
+        .about-circle-img {
+            width:100%;
+            max-width:420px;
+            border-radius:50%;
+            overflow:hidden;
+        }
+        .about-circle-img img {
+            width:100%;
+            display:block;
+        }
+        .section-eyebrow {
+            font-size:13px;
+            color:var(--gold);
+            letter-spacing:1px;
+            margin-bottom:6px;
+        }
+        .section-title-en {
+            font-size:32px;
+            margin-bottom:8px;
+        }
+        .section-title-it {
+            font-size:20px;
+            color:var(--gold);
+            margin-bottom:20px;
+        }
+        .about p {
+            color:var(--text-light);
+            margin-bottom:16px;
+        }
+        /* ========== Services New / 修复成第二张图那种杂志式 UI ========== */
+.services-new {
+    padding: 100px 0;
+    background-color: var(--cream);
+}
+.section-top {
+    margin-bottom: 48px;
+}
+.section-sub {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.section-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--dark-navy);
+    margin-bottom: 8px;
+}
+.section-title-it {
+    font-size: 20px;
+    color: var(--gold);
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+.service-card-new {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+.service-card-new:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+.service-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.service-info {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.service-info h3 {
+    font-size: 18px;
+    margin: 0 0 6px;
+    color: var(--dark-navy);
+}
+.service-it {
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+.service-info p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+}
+.service-meta a {
+    color: var(--dark-navy);
+    text-decoration: none;
+    font-weight: 600;
+}
+/* 移动端适配 */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 28px;
+    }
+}
+        /* ========== Partner Institutions ========== */
+        .institutions {
+            padding:80px 0;
+        }
+        .inst-head {
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            margin-bottom:40px;
+        }
+        .inst-grid {
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:24px;
+        }
+        .inst-card {
+            background:white;
+            border-radius:var(--radius-lg);
+            overflow:hidden;
+        }
+        .inst-card img {
+            width:100%;
+            height:160px;
+            object-fit:cover;
+        }
+        .inst-card-body {
+            padding:16px;
+        }
+        .inst-location {
+            font-size:12px;
+            color:var(--gold);
+        }
+        .inst-card h4 {
+            margin:6px 0;
+            font-size:16px;
+        }
+        /* ========== Stats 数据条 ========== */
+        .stats-bar {
+            background:var(--dark-navy);
+            color:white;
+            padding:64px 0;
+        }
+        .stats-grid {
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            text-align:center;
+        }
+        .stats-number {
+            font-size:40px;
+            color:var(--gold);
+            font-weight:bold;
+        }
+        .stats-label {
+            font-size:14px;
+            opacity:0.85;
+        }
+        /* ========== Testimonials 评价 ========== */
+        .testimonials {
+            padding:80px 0;
+            text-align:center;
+        }
+        .testi-grid {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:24px;
+            margin-top:40px;
+        }
+        .testi-card {
+            background:white;
+            border-radius:var(--radius-lg);
+            padding:24px;
+            text-align:left;
+            box-shadow:var(--shadow-sm);
+        }
+        .avatar {
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            object-fit:cover;
+            margin-bottom:12px;
+        }
+        .testi-name {
+            font-weight:bold;
+        }
+        .testi-school {
+            font-size:13px;
+            color:var(--text-light);
+            margin-bottom:12px;
+        }
+        .testi-text {
+            font-size:14px;
+        }
+        .testi-it {
+            font-size:13px;
+            color:#777;
+            margin-top:8px;
+        }
+        /* ========== News ========== */
+        .news {
+            padding:80px 0;
+        }
+        .news-head {
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            margin-bottom:40px;
+        }
+        .news-grid {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:24px;
+        }
+        .news-card {
+            background:white;
+            border-radius:var(--radius-lg);
+            overflow:hidden;
+        }
+        .news-card img {
+            width:100%;
+            height:160px;
+            object-fit:cover;
+        }
+        .news-body {
+            padding:16px;
+        }
+        .news-tag {
+            font-size:12px;
+            color:var(--gold);
+        }
+        .news-date {
+            font-size:12px;
+            color:#888;
+            text-align:right;
+        }
+        /* ========== CTA Section ========== */
+        .cta-section {
+            padding:100px 0;
+            background:var(--dark-navy);
+            color:white;
+            text-align:center;
+            position:relative;
+        }
+        .cta-section::before {
+            content:"";
+            position:absolute;
+            inset:0;
+            background-image:url('images/footer_bg.png');
+            background-size:cover;
+            background-position:center;
+            opacity:0.18;
+        }
+        .cta-inner {
+            position:relative;
+            z-index:2;
+        }
+        .cta-buttons {
+            display:flex;
+            gap:20px;
+            justify-content:center;
+            margin-top:32px;
+        }
+        /* ========== Footer ========== */
+        footer {
+            background:var(--dark-navy);
+            color:rgba(255,255,255,0.75);
+            padding:60px 0 30px;
+        }
+        .footer-grid {
+            display:grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap:32px;
+            margin-bottom:40px;
+        }
+        .footer-copyright {
+            border-top:1px solid rgba(255,255,255,0.12);
+            padding-top:24px;
+            display:flex;
+            justify-content:space-between;
+            font-size:13px;
+        }
+        /* ========== 移动端适配 ========== */
+        @media(max-width:992px){
+            .hero,.about {grid-template-columns:1fr;}
+            .service-grid,.inst-grid {grid-template-columns: repeat(2,1fr);}
+            .testi-grid,.news-grid {grid-template-columns:1fr;}
+            .stats-grid {grid-template-columns: repeat(2,1fr); gap:30px;}
+            .footer-grid {grid-template-columns: repeat(2,1fr);}
+            .nav-links {display:none;}
+        }
+        @media(max-width:576px){
+            .service-grid,.inst-grid {grid-template-columns:1fr;}
+            .stats-grid {grid-template-columns:1fr;}
+            .footer-grid {grid-template-columns:1fr;}
+            .hero h1 {font-size:32px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-wrap">
+            <a href="#" class="logo">
+                <div class="logo-circle">N</div>
+                <span>N&S EDUCAZIONE STUDIO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Servizi</a></li>
+                <li><a href="#">Istituzioni</a></li>
+                <li><a href="#">Storie di successo</a></li>
+                <li><a href="#">Chi siamo</a></li>
+                <li><a href="#">Notizie</a></li>
+                <li><a href="#">Contatti</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <a href="index.html"><span>EN</span></a>
+                    <span class="active">IT</span>
+                </div>
+                <button class="btn-primary">Invia Richiesta</button>
+            </div>
+        </div>
+    </header>
+    <!-- Hero区域 -->
+    <section class="hero container">
+        <div class="hero-text">
+            <div class="hero-eyebrow">SCOPRI LA CINA ATTRAVERSO L'ESPERIENZA</div>
+            <h1>Scopri la Cina attraverso l'esperienza</h1>
+            <div class="hero-subtitle-it">Unire culture europee e cinesi</div>
+            <p>Aiutiamo gli europei a scoprire la Cina attraverso viaggi studio, laboratori di artigianato tradizionale, programmi business, viaggi e iscrizione universitaria. Dall’immersione culturale all’ingresso nel mercato, colmiamo le distanze con una consulenza personalizzata.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Esplora i nostri programmi</button>
+                <button class="btn-outline">Prenota una consulenza</button>
+            </div>
+        </div>
+        <div class="hero-img-wrap">
+            <img src="images/hero_courtyard.png" alt="Cortile universitario europeo">
+        </div>
+    </section>
+    <!-- About -->
+    <section class="about container">
+        <div class="about-circle-img">
+            <img src="images/about_globe.png" alt="Mappamondo vintage">
+        </div>
+        <div class="about-text">
+            <div class="section-eyebrow">CHI SIAMO</div>
+            <h2 class="section-title-en">Unire culture europee e cinesi</h2>
+            <div class="section-title-it">N&S Educazione Studio</div>
+            <p>N&S Educazione Studio è un’agenzia internazionale di consulenza educativa dedicata ad aiutare gli europei a conoscere la Cina. Grazie alla nostra esperienza pluriennale, il team di esperti offre orientamento personalizzato per viaggi studio, missioni business e progetti di immersione culturale.</p>
+            <button class="btn-outline">Conosci il nostro team</button>
+        </div>
+    </section>
+    <!-- Services -->
+<section class="services-new">
+    <div class="container">
+        <div class="section-top">
+            <div>
+                <div class="section-sub">I NOSTRI SERVIZI</div>
+                <h2 class="section-title">Esperienze curate per l'Europa</h2>
+                <div class="section-title-it">Servizi dedicati ai partecipanti europei</div>
+            </div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card-new">
+                <div class="service-img">
+                    <img src="images/service_01.png" alt="Viaggi studio">
+                </div>
+                <div class="service-info">
+                    <h3>Viaggi Studio e Campi Estivi</h3>
+                    <div class="service-it">Esperienze culturali immersive in Cina</div>
+                    <p>Esperienze culturali immersive in Cina per studenti e famiglie, pensate per creare un ponte tra Oriente e Occidente.</p>
+                    <div class="service-meta">
+                        <span>7–14 GIORNI</span>
+                        <a href="#">Scopri →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card-new">
+                <div class="service-img">
+                    <img src="images/service_02.png" alt="Artigianato tradizionale">
+                </div>
+                <div class="service-info">
+                    <h3>Laboratori di Artigianato Tradizionale</h3>
+                    <div class="service-it">Arte e cultura cinese</div>
+                    <p>Impara la calligrafia cinese, la cerimonia del tè, la pittura su seta e le arti marziali con maestri artigiani.</p>
+                    <div class="service-meta">
+                        <span>3–5 GIORNI</span>
+                        <a href="#">Scopri →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card-new">
+                <div class="service-img">
+                    <img src="images/service_03.png" alt="Affari in Cina">
+                </div>
+                <div class="service-info">
+                    <h3>Affari in Cina</h3>
+                    <div class="service-it">Consulenza per imprenditori europei</div>
+                    <p>Consulenza business, ingresso nel mercato, contatti commerciali e programmi personalizzati per imprenditori europei.</p>
+                    <div class="service-meta">
+                        <span>SU MISURA</span>
+                        <a href="#">Scopri →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card-new">
+                <div class="service-img">
+                    <img src="images/service_04.png" alt="Viaggio e studio">
+                </div>
+                <div class="service-info">
+                    <h3>Viaggio e Studio</h3>
+                    <div class="service-it">Iscrizione universitaria in Cina</div>
+                    <p>Pacchetti turistici e supporto per l’iscrizione universitaria, per una transizione fluida verso la Cina.</p>
+                    <div class="service-meta">
+                        <span>1–6 MESI</span>
+                        <a href="#">Scopri →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Partner Institutions -->
+    <section class="institutions container">
+        <div class="inst-head">
+            <div>
+                <div class="section-eyebrow">ISTITUZIONI PARTNER</div>
+                <h2 class="section-title-en">Istituzioni leader in Cina</h2>
+                <div class="section-title-it">Le nostre università e organizzazioni partner</div>
+            </div>
+            <button class="btn-outline">Vedi tutte le istituzioni</button>
+        </div>
+        <div class="inst-grid">
+            <div class="inst-card">
+                <img src="images/uni_01.png">
+                <div class="inst-card-body">
+                    <div class="inst-location">PECHINO</div>
+                    <h4>Guida ai viaggi studio in Cina per studenti europei</h4>
+                </div>
+            </div>
+            <div class="inst-card">
+                <img src="images/uni_02.png">
+                <div class="inst-card-body">
+                    <div class="inst-location">SHANGHAI</div>
+                    <h4>Come costruire relazioni commerciali a Shanghai</h4>
+                </div>
+            </div>
+            <div class="inst-card">
+                <img src="images/uni_03.png">
+                <div class="inst-card-body">
+                    <div class="inst-location">PECHINO</div>
+                    <h4>I migliori artigianati tradizionali da imparare in Cina</h4>
+                </div>
+            </div>
+            <div class="inst-card">
+                <img src="images/uni_04.png">
+                <div class="inst-card-body">
+                    <div class="inst-location">SHANGHAI</div>
+                    <h4>Università di Fudan</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div>
+                <div class="stats-number">500+</div>
+                <div class="stats-label">Studenti assistiti</div>
+            </div>
+            <div>
+                <div class="stats-number">50+</div>
+                <div class="stats-label">Università partner</div>
+            </div>
+            <div>
+                <div class="stats-number">10+</div>
+                <div class="stats-label">Anni di esperienza</div>
+            </div>
+            <div>
+                <div class="stats-number">98%</div>
+                <div class="stats-label">Tasso di successo</div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="testimonials container">
+        <div class="section-eyebrow">STORIE DI SUCCESSO</div>
+        <h2 class="section-title-en">Storie di scambio culturale</h2>
+        <div class="section-title-it">Testimonianze dei nostri partecipanti</div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <img class="avatar" src="images/avatar_01.png">
+                <div class="testi-name">Siddharth Mehta</div>
+                <div class="testi-school">UNIVERSITÀ BOCCONI, MILANO</div>
+                <div class="testi-text">"Il viaggio studio a Shanghai è stato incredibile. N&S Educazione Studio ha curato ogni dettaglio, dalle visite universitarie ai laboratori culturali."</div>
+            </div>
+            <div class="testi-card">
+                <img class="avatar" src="images/avatar_02.png">
+                <div class="testi-name">Camila Lopez</div>
+                <div class="testi-school">UNIVERSITÀ LA SAPIENZA, ROMA</div>
+                <div class="testi-text">"Il programma business a Pechino ha aperto porte che non pensavo possibili. La rete del team è veramente impressionante."</div>
+            </div>
+            <div class="testi-card">
+                <img class="avatar" src="images/avatar_03.png">
+                <div class="testi-name">Yuki Tanaka</div>
+                <div class="testi-school">POLITECNICO DI TORINO</div>
+                <div class="testi-text">"Imparare calligrafia tradizionale e cerimonia del tè è stato il punto culminante del mio viaggio. Gli istruttori erano maestri."</div>
+            </div>
+        </div>
+    </section>
+    <!-- News -->
+    <section class="news container">
+        <div class="news-head">
+            <div>
+                <div class="section-eyebrow">ULTIME NOTIZIE</div>
+                <h2 class="section-title-en">Approfondimenti sull'Esperienza in Cina</h2>
+            </div>
+            <button class="btn-outline">Vedi tutti gli articoli</button>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="images/news_01.png">
+                <div class="news-body">
+                    <div style="display:flex;justify-content:space-between;">
+                        <span class="news-tag">GUIDE</span>
+                        <span class="news-date">12 GEN 2026</span>
+                    </div>
+                    <h4>Guida alle preiscrizioni universitarie per studiare in Cina</h4>
+                </div>
+            </div>
+            <div class="news-card">
+                <img src="images/news_02.png">
+                <div class="news-body">
+                    <div style="display:flex;justify-content:space-between;">
+                        <span class="news-tag">BORSE</span>
+                        <span class="news-date">20 DIC 2025</span>
+                    </div>
+                    <h4>Come richiedere le borse di studio del Governo Cinese</h4>
+                </div>
+            </div>
+            <div class="news-card">
+                <img src="images/news_03.png">
+                <div class="news-body">
+                    <div style="display:flex;justify-content:space-between;">
+                        <span class="news-tag">VITA</span>
+                        <span class="news-date">05 NOV 2025</span>
+                    </div>
+                    <h4>Costi della vita e soluzioni abitative a Shanghai e Pechino</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container cta-inner">
+            <div class="section-eyebrow">INIZIA IL TUO VIAGGIO IN CINA</div>
+            <h2 class="section-title-en">Pronto a esplorare?</h2>
+            <div class="cta-buttons">
+                <button class="btn-primary">Invia Richiesta</button>
+                <button class="btn-outline" style="border-color:white;color:white;">Contatta via WhatsApp</button>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="color:white;">
+                        <div class="logo-circle">N</div>
+                        <span>N&S EDUCAZIONE STUDIO</span>
+                    </div>
+                    <p style="margin-top:12px; font-size:14px;">Connettiamo studenti europei ad opportunità culturali e accademiche autentiche in tutta la Cina.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px;">SERVIZI</h4>
+                    <ul style="list-style:none;font-size:14px;">
+                        <li>Viaggi studio</li>
+                        <li>Programmi business</li>
+                        <li>Arti tradizionali</li>
+                        <li>Iscrizione universitaria</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px;">CONTATTI</h4>
+                    <p style="font-size:14px;">Via Roma 42, Milano, Italia</p>
+                    <p style="font-size:14px;">info@nseducazione.com</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px;">SEGUICI</h4>
+                    <div style="display:flex;gap:12px;">
+                        <span>IG</span><span>FB</span><span>LI</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <span>© 2026 N&S Educazione Studio. Tutti i diritti riservati.</span>
+                <div>
+                    <span style="margin-left:16px;">Privacy Policy</span>
+                    <span style="margin-left:16px;">Termini e condizioni</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
